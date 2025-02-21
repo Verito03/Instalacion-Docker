@@ -1,0 +1,26 @@
+INSTALACION DE DOCKER EN LINUX (UBUNTU) 🐳
+Realizado por Verónica Pardo Martín
+---------------------------------------
+      📌 INSTALACIÓN DE DOCKER
+1. Abrimos la terminal y actualizamos todos los paquetes con el comando 'sudo apt update'
+2. A continuación instalamos los paquetes necesarios para la actualización, 'sudo apt-get install ca-certificates curl'
+3. Con este comando, indicamos donde vamos a instalarlo 'sudo install -m 0755 -d /etc/apt/keyrings'
+4. Después, usamos el paquete curl, para indicar en que directorio vamos a instalar la app 'sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc'
+5. Modificamos los permisos del archivo que acabamos de crear con este comando 'sudo chmod a+r /etc/apt/keyrings/docker.asc'
+6. Para terminar, usamos el siguiente comando 
+'echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update'
+---------------------------------------
+      📌 COMPROBACIÓN USO DEL USUARIO
+1. Al terminar con la instalación, vamos a meternos a nuestro directorio 'root' con el comando 'sudo su -'
+2. Una vez dentro, nos desplazamos al repositorio donde está docker instalado 'cd /etc/apt/sources.list.d/'
+3. Hacemos un 'ls' para verificar que está docker instalado y realizamos 'cat docker.list' para comprobar que está guardado correctamente
+4. Al comprobar esto, ponemos el siguiente comando 'sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin'
+5. Damos los permisos necesarios para usar docker, nuestro usuario con 'sudo usermod -aG docker $USER'
+6. Usamos 'exit' para salir del terminal root.
+7. Una vez en nuestro directorio para verificar que se ha instalado correctamente en el sistema con 'docker --version'
+---------------------------------------
+Ya estaría instalado docker en nuestro sistema 🐳🚀
