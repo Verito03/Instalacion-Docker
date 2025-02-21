@@ -1,4 +1,4 @@
-EJEMPLOS DE EJECUCIÓN Y EJERCICIOS DOCKER🚀
+COMANDOS BÁSICOS Y EJEMPLOS DOCKER🚀🐋
 Realizado por Verónica Pardo Martín
 ------------------------------------------------
       📌 COMANDOS BÁSICOS DE DOCKER
@@ -16,3 +16,11 @@ Siendo '-it' la etiqueta que hace que el contenedor sea interactivo. Para entrar
 3. Comprobar los contenedores que solo se ejecutan una vez, usamos 'docker run -it --rm --name [nombre_contenedor] ubuntu top', que nos muestra los servicios activos de dicho contenedor.
 4. Crear un CONTENEDOR DEMONIO (contenedor que se ejecuta todo el rato), usamos 'docker run -d --name [nombre_contenedor] ubuntu bash -c '[COMANDO QUE HACE EL CONTENEDOR]'. Para ejecutarlo usamos 'docker logs [nombre_contenedor]'
 5. PARAR UN CONTENEDOR DEMONIO usamos 'docker stop [nombre_contenedor]'. Para borrarlo
+6. CREAR UN CONTENEDOR CON UNA VARIABLE DE ENTORNO (variable global), usamos 'docker run -it --name [nombre_contenedor] -e USUARIO=Vero ubuntu bash'
+------------------------------------------------
+      📌 EJEMPLOS DE CONTENEDORES
+1. CONTENEDOR DEMONIO = 'docker run -d --name horaLocal ubuntu bash -c 'while true; do echo $(date + %T); sleep 1; done''
+Ejecutará la hora cada segundo por el comando 'sleep'.
+
+2. CONTENEDOR CONTÍNUO = 'docker logs -f [nombre_contenedor]'. No para de ejecutarse y muestra el nuevo registro hasta que no lo pauses.
+Con el comando 'docker pause [nombre_contenedor]' y para despausarlo 'docker unpause [nombre_contenedor]'
