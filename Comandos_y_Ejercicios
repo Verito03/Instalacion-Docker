@@ -1,0 +1,18 @@
+EJEMPLOS DE EJECUCIÓN Y EJERCICIOS DOCKER🚀
+Realizado por Verónica Pardo Martín
+------------------------------------------------
+      📌 COMANDOS BÁSICOS DE DOCKER
+1. INICIAR UN CONTENEDOR se usa el comando 'docker run [nombre_contenedor]', para que se ejecute el contenedor a la vez que se crea.
+2. CREAR UN CONTENEDOR SIN EJECUTARLO se usa el comando 'docker create [nombre_contenedor]'
+3. Ver como está el contenedor usamos 'docker ps -a', donde nos muestra el ID, su IMAGE,...
+4. Borrar un contenedor se usa 'docker rm [ID del contenedor] o [NAME]'
+5. Ver las imagenes descargadas de los contenedores usamos 'docker images'
+6. Cambiar el nombre de origen de un contenedor se usa 'docker rename [nombre_contenedor] [nombre_contenedor_cambiado]'. Para comprobar que se ha cambiado usamos 'docker ps -a'
+------------------------------------------------
+      📌 COMANDOS DOCKER
+1. Para ver los eventos que ocurren en nuestro contenedor, usamos 'docker events', en otra terminal distinta en la que estamos trabajando
+2. Crear un CONTENEDOR INTERACTIVO (podemos entrar y salir cuando queramos sin que se destruya al salir), usamos el siguiente comando 'docker run -it --name [nombre_contenedor] -h contenedorInteractivo ubuntu bash'.
+Siendo '-it' la etiqueta que hace que el contenedor sea interactivo. Para entrar usamos 'docker start [nombre_contenedor]'. Para salir, usamos 'exit'
+3. Comprobar los contenedores que solo se ejecutan una vez, usamos 'docker run -it --rm --name [nombre_contenedor] ubuntu top', que nos muestra los servicios activos de dicho contenedor.
+4. Crear un CONTENEDOR DEMONIO (contenedor que se ejecuta todo el rato), usamos 'docker run -d --name [nombre_contenedor] ubuntu bash -c '[COMANDO QUE HACE EL CONTENEDOR]'. Para ejecutarlo usamos 'docker logs [nombre_contenedor]'
+5. PARAR UN CONTENEDOR DEMONIO usamos 'docker stop [nombre_contenedor]'. Para borrarlo
