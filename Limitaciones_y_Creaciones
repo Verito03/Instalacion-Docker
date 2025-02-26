@@ -1,0 +1,21 @@
+LIMITACIONES Y CREACIONES DE IMAGENES EN DOCKER 🐋
+Realizado por Veronica Pardo Martin
+--------------------------------------------------
+      📌LIMITACIONES
+Para saber el número de procesadores que tiene el host, usamos el siguiente comando 'nproc -all', donde nos mostrará un número
+
+Para CREAR UN CONTENEDOR LIMITADO CON UN CIERTO NÚMERO DE PROCESADORES usamos 'docker run -d --cpus 1 --name [nombre_servidor] httpd:2.4'
+
+Para saber CUANTOS CICLOS UTILIZA EL CONTENEDOR usamos este comando 'docker inspect --format '{{.HostConfig.NanoCpus}}' [nombre_servidor]'
+
+      📌CREACION DE IMAGENES
+Una imagen es una PLANTILLA para CREAR CONTENEDORES, donde el contenedor es la imagen, pero ejecutada.
+
+Hay dos tipos de imagenes: PRIVADAS O PÚBLICAS, y nosotros usaremos un registro PÚBLICO de docker, llamada DOCKER HUB
+
+El nombre de las imagenes se declara de esta manera = 'usuario/nombre:etiqueta'
+
+Las etiquetas pueden ser por ejemplo 'MediaWiki' y no usamos etiquera, se pondrá de defecto la etiqueta 'latest'
+
+En las etiquetas se debe mostrar su version y etiquetas para clasificar cada contenedor
+
