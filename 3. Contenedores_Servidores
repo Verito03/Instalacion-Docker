@@ -20,12 +20,10 @@ Podemos modificar el contenedor podemos hacerlo de diferentes formas:
 'echo "<h1>Curso Docker</h1>" > index.html
 docker cp index.html  my-apache-app:/usr/local/apache2/htdocs/'
 
-2. CONTENEDOR CON LA IMAGEN MARIBADB
+2. CONTENEDOR CON CONTRASEÑA
 
-Para crear un contenedor con una imagen mariadb, usamos el siguiente comando 'docker run -d --name mimariadb -e MARIADB_ROOT_PASSWORD=my-secret-pw mariadb:10.5'
+Para crear el contenedor usamos el siguiente comando 'docker run -d --name mariadb -e MARIADB_ROOT_PASSWD=my-secret-pw mariadb:10.5' e indicamos la contraseña de nuestra contaseña
 
-Para ver que se ha creado correctamente usamos este comando 'docker exec -it mimariadb env' y para acceder podemos ejecutar 'docker exec -it mimariadb bash'
+Para CREAR DIFERENTES CONTENEDORES para usarlos en nuestra app usamos 'docker run -l servicio=web -l entorno=desarrollo -l aplicacion=apache --name prueba_web ubuntu'
 
-
-
-
+Para BUSCAR LOS CONTENEDORES CON UN FILTRO usamos 'docker ps -a --filter='label='aplication'' o '--filter='label=entorno''
