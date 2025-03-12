@@ -1,4 +1,4 @@
-COMANDOS BÁSICOS Y EJEMPLOS DOCKER🚀🐋
+COMANDOS BÁSICOS E IMÁGENES DOCKER🚀🐋
 Realizado por Verónica Pardo Martín
 ------------------------------------------------
       📌 COMANDOS BÁSICOS DE DOCKER
@@ -24,3 +24,12 @@ Ejecutará la hora cada segundo por el comando 'sleep'.
 
 2. CONTENEDOR CONTÍNUO = 'docker logs -f [nombre_contenedor]'. No para de ejecutarse y muestra el nuevo registro hasta que no lo pauses.
 Con el comando 'docker pause [nombre_contenedor]' y para despausarlo 'docker unpause [nombre_contenedor]'
+------------------------------------------------
+      📌 IMÁGENES EN DOCKER
+Una imagen es una plantilla de sólo lectura con instrucciones para crear un contenedor Docker. Contiene el sistema de fichero que tendrá el contenedor.
+El NOMBRE DE UNA IMAGEN suele estar formado por tres partes: USUARIO, NOMBRE Y ETIQUETA
+Por ejemplo, en la media MEDIAWIKI, las etiquetas 1.41.0, 1.41, stable y latest apuntan a la misma versión de la imagen
+------------------------------------------------
+      📌 ETIQUETAS DE IMÁGENES EN DOCKER
+Normalmente, las etiqeutas nos permiten versionar las imágenes. Podemos seguir viendo que algunas etiquetas, nos indican además de la versión,
+los servicios que tiene instalada la imagen.
