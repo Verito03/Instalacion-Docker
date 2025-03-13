@@ -1,0 +1,30 @@
+CREACIÓN DE CONTENEDORES CON DOCKER COMPOSE🚀🐋
+Realizado por Verónica Pardo Martín
+-----------------------------------------------------------
+      📌 CREANDO MULTICONTENEDOR CON DOCKER COMPOSE
+Para trabajar con escenarios multiples, usamos DOCKER COMPOSE para gestionarlos
+Vamos a crear un escenario en un fichero llamado COMPOSE.YAML y vamos a gestionar el ciclo de vide de la app.
+En estos momentos, hay dos versiones de Docker Compose, ya que en Docker Compose V1, no podiamos usar el cliente Docker
+y teniamos que instalar un programa independiente escrito en Python, llamado docker-compose.
+-----------------------------------------------------------
+      📌 VENTAJAS DE USAR DOCKER COMPOSE
+1. Hacer todo de manera DECLARATIVA para que no tenga que repetir todo el proceso cada vez que construyo el escenario
+2. Los archivos de declaración, se pueden DISTRIBUIR de manera sencilla, aumentando la colaboración entre los equipos de desarrollo
+3. Poner en funcionamiento todos los contenedores que necesita la app de una sola vez y debidamente configurados
+4. Garantiza que los contenedores SE ARRANCAN EN EL ORDEN ADECUADO
+5. HAY COMUNICACIÓN ENTRE LOS CONTENEDORES que pertenecen a la app
+6. PORTABILIDAD ENTRE ENTORNOS: compose admite variables en el archivo de declaración. Puede utilizar estas variables para personalizar
+su composición para diferentes entornos o diferentes usuarios
+-----------------------------------------------------------
+      📌 FICHERO COMPOSE.YAML
+En este fichero, vamos a definir un escenario multicontenedor usando el formato YAML. La instrucción DOCKER COMPOSE se debe ejecutar
+EN EL DIRECTORIO DONDE SE ENCUENTRA ESE FICHERO.
+          1. ESTRUCTURA DEL FICHERO
+El parámetro VERSION indica el formato de fichero DOCKER COMPOSE que se está utilizando.
+El parámetro NAME indica el nombre del escenario. Si no se indica el nombre del proyecto, será el nombre del directorio donde se encuentra el fichero
+El escenario está formado por SERVICES. Cada uno ellos representa un contenedor
+-----------------------------------------------------------
+      📌 COMANDOS PARA MULTICONTENEDORES
+1. Usamos el comando DOCKER COMPOSE UP -D, y hay que ejecutarlos donde esté el ficher compose.yaml para que funcione
+2. Para ver nuestros multicontenedores usamos el comando DOCKER COMPOSE PS
+3. Para elminiar un multicontenedor usamos el comando DOCKER COMPOSE DOWN -D [NOMBRE_ARCHIVO]
