@@ -1,15 +1,34 @@
 LIMITACIONES Y CREACIONES DE IMAGENES EN DOCKER 🐋
 Realizado por Veronica Pardo Martin
 --------------------------------------------------
-      📌LIMITACIONES
+      📌 LIMITACIONES
 - Para saber el número de procesadores que tiene el host, usamos el siguiente comando 'nproc -all', donde nos mostrará un número
 - Para CREAR UN CONTENEDOR LIMITADO CON UN CIERTO NÚMERO DE PROCESADORES usamos 'docker run -d --cpus 1 --name [nombre_servidor] httpd:2.4'
 - Para saber CUANTOS CICLOS UTILIZA EL CONTENEDOR usamos este comando 'docker inspect --format '{{.HostConfig.NanoCpus}}' [nombre_servidor]'
 --------------------------------------------------
-      📌CREACION DE IMAGENES
+      📌 CREACION DE IMAGENES
 - Una imagen es una PLANTILLA para CREAR CONTENEDORES, donde el contenedor es la imagen, pero ejecutada.
 - Hay dos tipos de imagenes: PRIVADAS O PÚBLICAS, y nosotros usaremos un registro PÚBLICO de docker, llamada DOCKER HUB
 - El nombre de las imagenes se declara de esta manera = 'usuario/nombre:etiqueta'
 - Las etiquetas pueden ser por ejemplo 'MediaWiki' y no usamos etiquera, se pondrá de defecto la etiqueta 'latest'
 - En las etiquetas se debe mostrar su version y etiquetas para clasificar cada contenedor
+---------- 1. CREAR UNA IMAGEN PARTIR DE UN CONTENEDOR ------------------------------------------------------
+- Primero creamos un contenedor con el comando DOCKER RUN -IT --NAME CONTENEDOR DEBIAN
+- Para configurarlo, actualizamos apache del contenedor con el siguiente comando APT UPDATE && APT INSTALL APACHE2 -Y y modificamos
+el index.html con "echo <h1>Curso Docker </h1>" /var/www/html/index.html"
+- Para guardar los cambios en una imagen, usamos DOCKER COMMIT --CHANGE='CMD APACHECTL -D FOREGROUND' [NOMBRE_CONTENEDOR] [NOMBREUSUARIO/MYAPACHE2:V1]
+- Ejecutamos DOCKER IMAGES para comprobar que se ha creado correctamente el contenedor con la imagen
+---------- 2. CREAR UNA IMAGEN A PARTIR DE UN DOCKERFILE ------------------------------------------------------
+- Nos descargamos el archivo DOCKERFILE de la ruta /modulo7/dockerfile de este repositorio 'https://github.com/josedom24/ejemplos_curso_docker_ow'
+- Para crear la imagen, usamos el comando DPCKER BUILD -T [NOMBRE_IMAGEN_NUEVA]
+- Para comprobar que lo hemos hecho bien, usamos DOCKER IMAGES para comprobarlo
+---------- 3. CREAR UNA IMAGEN CON UNA PAGINA WEB ESTÁTICA ------------------------------------------------------
+- Tenemos que tener dos archivos, una carpeta con las aplicaciones y otro con el dockerFile.
+- Nuestro dockerfile tiene que tener escrito lo siguiente:
+      FROM nginx:1.24
+      COPY publi.html /urs/share/nginx/html
+      EXPOSE 80
+- Modificamos el archivo y lo guardamos con NANO DOCKERFILE
+- Despues creamos la imagen como lo hicimos anteriormente DOCKER BUILD -T [NOMBRE_IMAGEN]
+- Para terminar, creamos nuestra imagen propia con DOCKER RUN -D -P 80:80 --NAME [NOMBRE_CONTENEDOR] [NOMBRE_IMAGEN]
 
