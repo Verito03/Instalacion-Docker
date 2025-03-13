@@ -2,26 +2,23 @@ CONTENEDORES CON SERVIDORES EN DOCKER 🐋
 Realizado por Verónica Pardo Martín
 -----------------------------------------------------
       📌 DESPLIEGUE DE WORDPRESS + MARIADB
-Para la instalación de Wordpress necesitamos dos contenedores: uno para ejecutar la base de datos MariaDB y el servidor web con la aplicación.
-Siguiendo la documentación de la imagen mariadb y la imagen wordpress podemos ejecutarlos para que se creen.
-Una vez creados, accedemos desde el exterior al servidor web, con los puertos mapeados.
+- Para la instalación de Wordpress necesitamos dos contenedores: uno para ejecutar la base de datos MariaDB y el servidor web con la aplicación.
+- Siguiendo la documentación de la imagen mariadb y la imagen wordpress podemos ejecutarlos para que se creen.
+- Una vez creados, accedemos desde el exterior al servidor web, con los puertos mapeados.
+- Para ver los puertos que están MAPEADOS en un contenedor de dos manera distintas (siendo 80 el puerto local)
+      'docker port my-apache-app 80/tpc -> 0.0.0.0:8080'
+      'docker port my-apache-app 80/tcp -> [::]:8080'
 
-Para ver los puertos que están MAPEADOS en un contenedor de dos manera distintas (siendo 80 el puerto local)
-'docker port my-apache-app 80/tpc -> 0.0.0.0:8080'
-'docker port my-apache-app 80/tcp -> [::]:8080'
-
-Para probarlo accedemos desde un navegador web poniendo lo siguiente 'http://localhost:8080'
-Y devería salir un 'It works!' para confirmar que lo hemos realizado bien
+- Para probarlo accedemos desde un navegador web poniendo lo siguiente 'http://localhost:8080'
+- Y devería salir un 'It works!' para confirmar que lo hemos realizado bien
 -----------------------------------------------------
       📌 MODIFICACIONES
-Podemos modificar el contenedor podemos hacerlo de diferentes formas:
-'docker exec -it my-apache-app bash -c 'echo "<h1>Curso Docker</h1>" > /usr/local/apache2/htdocs/index.html'
-'echo "<h1>Curso Docker</h1>" > index.html
-docker cp index.html  my-apache-app:/usr/local/apache2/htdocs/'
+- Podemos modificar el contenedor podemos hacerlo de diferentes formas:
+      'docker exec -it my-apache-app bash -c 'echo "<h1>Curso Docker</h1>" > /usr/local/apache2/htdocs/index.html'
+      'echo "<h1>Curso Docker</h1>" > index.html
+      docker cp index.html  my-apache-app:/usr/local/apache2/htdocs/'
 -----------------------------------------------------
       📌 CONTENEDOR CON CONTRASEÑA
-Para crear el contenedor usamos el siguiente comando 'docker run -d --name mariadb -e MARIADB_ROOT_PASSWD=my-secret-pw mariadb:10.5' e indicamos la contraseña de nuestra contaseña
-
-Para CREAR DIFERENTES CONTENEDORES para usarlos en nuestra app usamos 'docker run -l servicio=web -l entorno=desarrollo -l aplicacion=apache --name prueba_web ubuntu'
-
-Para BUSCAR LOS CONTENEDORES CON UN FILTRO usamos 'docker ps -a --filter='label='aplication'' o '--filter='label=entorno''
+- Para crear el contenedor usamos el siguiente comando 'docker run -d --name mariadb -e MARIADB_ROOT_PASSWD=my-secret-pw mariadb:10.5' e indicamos la contraseña de nuestra contaseña
+- Para CREAR DIFERENTES CONTENEDORES para usarlos en nuestra app usamos 'docker run -l servicio=web -l entorno=desarrollo -l aplicacion=apache --name prueba_web ubuntu'
+- Para BUSCAR LOS CONTENEDORES CON UN FILTRO usamos 'docker ps -a --filter='label='aplication'' o '--filter='label=entorno''
